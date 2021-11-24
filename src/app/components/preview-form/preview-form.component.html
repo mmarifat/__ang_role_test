@@ -1,6 +1,6 @@
 <p> Preview Form</p>
 <div *ngIf="!!formField.image">
-  <p-image [src]="formField.image['objectURL']" alt="Image" width="400" (click)="gotoToLink(formField.url)"
+  <p-image [src]="formField.image?.objectURL" alt="Image" width="400" (click)="gotoToLink(formField.url)"
            [styleClass]="getStyleClass(formField.animation)"
   ></p-image>
 </div>

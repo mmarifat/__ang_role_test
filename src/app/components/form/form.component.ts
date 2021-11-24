@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {FormField} from "../../interfaces/form-field.interface";
 import {Store} from "@ngrx/store";
-import {initialFormFieldState} from "../../ngrx/reducers";
 import {MessageService} from "primeng/api";
 import {updateFormField} from "../../ngrx/actions";
 import {AnimationOptionsEnum} from "../../enums/animation-options.enum";
@@ -12,7 +11,11 @@ import {AnimationOptionsEnum} from "../../enums/animation-options.enum";
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
-  formField: FormField = {...initialFormFieldState};
+  public formField = {
+    image: null,
+    url: '',
+    animation: AnimationOptionsEnum.leftToRight
+  }
 
   dropDownOption: string[] = [AnimationOptionsEnum.leftToRight, AnimationOptionsEnum.rightToLeft]
 
@@ -23,12 +26,17 @@ export class FormComponent {
   }
 
   onImageSelect = (file: any) => {
-    this.formField.image = null;
-    this.formField.image = file.currentFiles[0];
+    this.formField = {
+      ...this.formField,
+      image: file.currentFiles[0]
+    };
   }
 
   onImageClear = () => {
-    this.formField.image = null;
+    this.formField = {
+      ...this.formField,
+      image: null
+    };
   }
 
   updateForm = () => {
@@ -44,9 +52,4 @@ export class FormComponent {
       })
     }
   }
-
-  resetForm = () => {
-    this.formField = {...initialFormFieldState}
-  }
-
 }

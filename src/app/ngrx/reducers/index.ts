@@ -2,7 +2,7 @@ import {Action, ActionReducer, createReducer, on} from '@ngrx/store';
 import {FormField} from "../../interfaces/form-field.interface";
 import {updateFormField} from "../actions";
 
-export const initialFormFieldState: FormField = {
+export let initialFormFieldState: FormField = {
   image: null,
   url: '',
   animation: ''

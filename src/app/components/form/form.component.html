@@ -1,9 +1,9 @@
-<form class="p-fluid p-grid formgrid" (submit)="updateForm()" [noValidate]="false" (reset)="resetForm()">
+<form class="p-fluid p-grid formgrid" (submit)="updateForm()" [noValidate]="false">
 
   <div class="field col-12">
     <label for="image">Image</label>
     <p-fileUpload name="image" id="image" (onSelect)="onImageSelect($event)" (onRemove)="onImageClear()"
-                  chooseLabel="Select" [previewWidth]="50"
+                  chooseLabel="Select" [previewWidth]="50" [auto]="true"
                   [multiple]="false" accept="image/*" [showUploadButton]="false" [showCancelButton]="false">
     </p-fileUpload>
   </div>
@@ -21,10 +21,7 @@
 
 
   <div class="col-12">
-    <div class="flex flex-wrap flex-column md:flex-row">
-      <div class="col-12 md:col-6">
-        <button type="reset" pButton label="Reset" icon="pi pi-times" class="p-button-danger"></button>
-      </div>
+    <div class="flex flex-wrap flex-column md:flex-row justify-content-center">
       <div class="col-12 md:col-6">
         <button type="submit" pButton label="Submit" icon="pi pi-check"></button>
       </div>
