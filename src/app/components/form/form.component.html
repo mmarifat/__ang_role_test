@@ -1,1 +1,34 @@
-<button pButton> Test</button>
+<form class="p-fluid p-grid formgrid" (submit)="updateForm()" [noValidate]="false" (reset)="resetForm()">
+
+  <div class="field col-12">
+    <label for="image">Image</label>
+    <p-fileUpload name="image" id="image" (onSelect)="onImageSelect($event)" (onRemove)="onImageClear()"
+                  chooseLabel="Select" [previewWidth]="50"
+                  [multiple]="false" accept="image/*" [showUploadButton]="false" [showCancelButton]="false">
+    </p-fileUpload>
+  </div>
+
+  <div class="field col-12">
+    <label for="url">Click Url</label>
+    <input id="url" type="url" pInputText required [ngModelOptions]="{standalone: true}" [(ngModel)]="formField.url">
+  </div>
+
+  <div class="field col-12">
+    <label for="animation">Animation</label>
+    <p-dropdown id="animation" [options]="dropDownOption" [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="formField.animation"></p-dropdown>
+  </div>
+
+
+  <div class="col-12">
+    <div class="flex flex-wrap flex-column md:flex-row">
+      <div class="col-12 md:col-6">
+        <button type="reset" pButton label="Reset" icon="pi pi-times" class="p-button-danger"></button>
+      </div>
+      <div class="col-12 md:col-6">
+        <button type="submit" pButton label="Submit" icon="pi pi-check"></button>
+      </div>
+    </div>
+  </div>
+
+</form>
